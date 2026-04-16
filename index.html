@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RESULTAT Family Office — Управление капиталом через поколения</title>
+  <meta name="description" content="Resultat Family Office — системы управления, защиты и передачи семейного капитала. Система КЛАН. 1000 лет процветания." />
+
+  <!-- Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── DESIGN TOKENS ─── */
+    :root {
+      --black:    #09090B;
+      --offblack: #111115;
+      --ink:      #1A1A22;
+      --mid:      #3A3A4A;
+      --muted:    #8A8A9A;
+      --border:   rgba(255,255,255,0.08);
+      --border-l: rgba(0,0,0,0.08);
+      --white:    #FFFFFF;
+      --cream:    #F7F5F2;
+      --gold:     #C9A94B;
+      --gold-lt:  #E8D49A;
+      --glass-bg: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.10);
+      --ff-display: 'Cormorant Garamond', Georgia, serif;
+      --ff-body:    'DM Sans', system-ui, sans-serif;
+      --max: 1260px;
+      --radius: 2px;
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff-body);
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: var(--ff-body); cursor: pointer; border: none; background: none; }
+
+    /* ─── SKIP LINK (accessibility) ─── */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 20px;
+      background: var(--gold);
+      color: var(--black);
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: var(--radius);
+      z-index: 9999;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 10px; }
+
+    /* ─── LAYOUT ─── */
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+    section { padding: 100px 0; }
+
+    /* ─── LABEL SYSTEM (BlackRock-style) ─── */
+    .label {
+      display: inline-block;
+      font-family: var(--ff-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .label--light { color: var(--muted); }
+
+    /* ─── TYPOGRAPHY ─── */
+    h1 {
+      font-family: var(--ff-display);
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 300;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+    }
+    h3 {
+      font-family: var(--ff-display);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    h4 {
+      font-family: var(--ff-display);
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    p { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,0.75); }
+    p.large { font-size: 20px; line-height: 1.65; }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      border-radius: var(--radius);
+      transition: all 0.25s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--white);
+      color: var(--black);
+      border: 1.5px solid var(--white);
+    }
+    .btn-primary:hover { background: var(--cream); border-color: var(--cream); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.35);
+    }
+    .btn-outline:hover { border-color: var(--white); }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--black);
+      border: 1.5px solid var(--gold);
+      font-weight: 600;
+    }
+    .btn-gold:hover { background: var(--gold-lt); border-color: var(--gold-lt); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid rgba(201,169,75,0.4);
+      padding: 12px 22px;
+      font-size: 12px;
+    }
+    .btn-ghost:hover { border-color: var(--gold); }
+    .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ─── GLASS CARD ─── */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 4px;
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 24px 0;
+    }
+
+    /* ══════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════ */
+    #nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 900;
+      transition: background 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    #nav.scrolled {
+      background: rgba(9,9,11,0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom-color: var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--ff-display);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+    .nav-logo span {
+      display: block;
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-family: var(--ff-body);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+
+    /* ─── MOBILE MENU ─── */
+    #mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      width: 100%;
+      background: var(--offblack);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 32px 32px;
+      z-index: 899;
+      flex-direction: column;
+      gap: 20px;
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    #mobile-menu .mobile-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 80px;
+      background: var(--black);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,169,75,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 20% 70%, rgba(60,50,100,0.12) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero-eyebrow-text {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .hero h1 { margin-bottom: 28px; }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: 18px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      margin-bottom: 44px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 56px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-item {}
+    .stat-num {
+      font-family: var(--ff-display);
+      font-size: 42px;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* Hero right card */
+    .hero-card {
+      padding: 44px 40px;
+      position: relative;
+    }
+    .hero-card-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .hero-card h3 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+    .hero-card p {
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+    .hero-card-tag {
+      display: inline-block;
+      padding: 5px 12px;
+      border: 1px solid rgba(201,169,75,0.3);
+      border-radius: 2px;
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .hero-card-deco {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 80px;
+      height: 80px;
+      border-top: 1px solid rgba(201,169,75,0.3);
+      border-right: 1px solid rgba(201,169,75,0.3);
+      border-radius: 0 4px 0 0;
+    }
+
+    /* ══════════════════════════════════════════
+       PROBLEM / CONTEXT
+    ══════════════════════════════════════════ */
+    #problem {
+      background: var(--cream);
+      color: var(--black);
+      padding: 100px 0;
+    }
+    #problem p { color: var(--mid); }
+    #problem .label { color: var(--mid); opacity: 0.6; }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .problem-stat {
+      font-family: var(--ff-display);
+      font-size: clamp(72px, 12vw, 140px);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--black);
+      letter-spacing: -0.04em;
+    }
+    .problem-stat span { color: var(--gold); }
+    .problem-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .problem-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-size: 16px;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+    .problem-list li::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+      margin-top: 12px;
+      flex-shrink: 0;
+    }
+    .problem-conclusion {
+      margin-top: 40px;
+      padding: 28px 32px;
+      background: var(--black);
+      color: var(--white);
+    }
+    .problem-conclusion p {
+      color: rgba(255,255,255,0.85);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    .problem-conclusion strong { color: var(--gold-lt); font-weight: 500; }
+
+    /* ══════════════════════════════════════════
+       CLAN SYSTEM
+    ══════════════════════════════════════════ */
+    #clan {
+      background: var(--offblack);
+      padding: 100px 0;
+    }
+    .clan-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 72px;
+    }
+    .clan-quote {
+      font-family: var(--ff-display);
+      font-size: 22px;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.7);
+      padding-left: 24px;
+      border-left: 2px solid var(--gold);
+    }
+    .clan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+    }
+    .clan-item {
+      background: var(--offblack);
+      padding: 36px 32px;
+      transition: background 0.3s;
+    }
+    .clan-item:hover { background: rgba(201,169,75,0.05); }
+    .clan-num {
+      font-family: var(--ff-display);
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .clan-item h4 { font-size: 19px; margin-bottom: 12px; }
+    .clan-item p { font-size: 14px; line-height: 1.65; }
+    .clan-cta {
+      margin-top: 56px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* ══════════════════════════════════════════
+       SERVICES
+    ══════════════════════════════════════════ */
+    #services { background: var(--black); padding: 100px 0; }
+    .services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 64px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--border);
+    }
+    .service-card {
+      background: var(--black);
+      padding: 44px 40px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .service-card:hover { background: rgba(255,255,255,0.02); }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.4s ease;
+    }
+    .service-card:hover::after { width: 100%; }
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(201,169,75,0.25);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .service-icon svg { width: 18px; height: 18px; color: var(--gold); }
+    .service-card h4 { font-size: 22px; margin-bottom: 12px; }
+    .service-card .tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    /* ══════════════════════════════════════════
+       INVESTORS (hidden layer)
+    ══════════════════════════════════════════ */
+    #investors {
+      background: var(--ink);
+      padding: 100px 0;
+    }
+    .investors-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .investors-card {
+      padding: 48px 44px;
+    }
+    .metric-row {
+      display: flex;
+      gap: 48px;
+      margin: 36px 0;
+    }
+    .metric-item {}
+    .metric-val {
+      font-family: var(--ff-display);
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--gold-lt);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .metric-unit {
+      font-size: 20px;
+      vertical-align: top;
+      margin-top: 6px;
+      display: inline-block;
+    }
+    .metric-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-top: 8px;
+    }
+    .investors-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+    .investors-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+    }
+    .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .check svg { width: 9px; height: 9px; color: var(--gold); }
+    .disclaimer {
+      font-size: 11px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ══════════════════════════════════════════
+       ACADEMY
+    ══════════════════════════════════════════ */
+    #academy {
+      background: var(--cream);
+      color: var(--black);
+      padding: 100px 0;
+    }
+    #academy h2 { color: var(--black); }
+    #academy .label { color: var(--mid); opacity: 0.6; }
+    #academy p { color: var(--mid); }
+    .academy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--border-l);
+      margin-top: 56px;
+    }
+    .academy-card {
+      background: var(--cream);
+      padding: 40px 36px;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.3s;
+    }
+    .academy-card:hover { border-bottom-color: var(--gold); }
+    .academy-card h4 {
+      font-family: var(--ff-display);
+      font-size: 20px;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+    .academy-card .num {
+      font-family: var(--ff-display);
+      font-size: 40px;
+      font-weight: 300;
+      color: rgba(0,0,0,0.08);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .book-card {
+      grid-column: span 2;
+      background: var(--black);
+      color: var(--white);
+      padding: 56px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+    .book-card h3 { color: var(--white); margin-bottom: 16px; }
+    .book-card p { color: rgba(255,255,255,0.7); }
+    .book-card-actions { display: flex; gap: 12px; flex-shrink: 0; }
+
+    /* ══════════════════════════════════════════
+       INSIGHTS
+    ══════════════════════════════════════════ */
+    #insights { background: var(--offblack); padding: 100px 0; }
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--border);
+      margin-top: 56px;
+    }
+    .insight-card {
+      background: var(--offblack);
+      padding: 40px 36px;
+      transition: background 0.3s;
+    }
+    .insight-card:hover { background: rgba(255,255,255,0.02); }
+    .insight-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+      border-radius: 2px;
+    }
+    .insight-card h4 { font-size: 21px; margin-bottom: 14px; }
+
+    /* ══════════════════════════════════════════
+       CTA
+    ══════════════════════════════════════════ */
+    #cta { background: var(--black); padding: 120px 0; }
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .cta-contact-box {
+      padding: 48px 44px;
+    }
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--white);
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .contact-method:hover {
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.03);
+    }
+    .contact-method svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .contact-method-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+    .contact-method-value { font-size: 15px; font-weight: 500; }
+    .cta-form { display: flex; flex-direction: column; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-field label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      color: var(--white);
+      font-family: var(--ff-body);
+      font-size: 14px;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: rgba(255,255,255,0.3);
+    }
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: var(--muted); }
+    .form-field select option { background: var(--offblack); }
+    .form-field textarea { resize: vertical; min-height: 100px; }
+    .form-submit { align-self: flex-start; }
+    .form-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    footer {
+      background: var(--offblack);
+      border-top: 1px solid var(--border);
+      padding: 60px 0 40px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 48px;
+    }
+    .footer-brand {}
+    .footer-logo {
+      font-family: var(--ff-display);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .footer-tagline {
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .footer-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+    .footer-col h5 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul li a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-legal {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 680px;
+    }
+    .footer-legal a { color: rgba(255,255,255,0.45); text-decoration: underline; }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ══════════════════════════════════════════
+       ACCESSIBILITY WIDGET
+    ══════════════════════════════════════════ */
+    #a11y-btn {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 52px;
+      height: 52px;
+      background: var(--gold);
+      color: var(--black);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 20px rgba(201,169,75,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #a11y-btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(201,169,75,0.5); }
+    #a11y-btn svg { width: 22px; height: 22px; }
+    #a11y-panel {
+      position: fixed;
+      bottom: 88px;
+      left: 24px;
+      width: 260px;
+      background: var(--offblack);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      z-index: 998;
+      display: none;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+    }
+    #a11y-panel.open { display: block; }
+    #a11y-panel h6 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .a11y-options { display: flex; flex-direction: column; gap: 10px; }
+    .a11y-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+    }
+    .a11y-toggle {
+      width: 40px;
+      height: 22px;
+      background: var(--border);
+      border-radius: 11px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.2s;
+      border: 1px solid var(--border);
+    }
+    .a11y-toggle.on { background: var(--gold); }
+    .a11y-toggle::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 14px;
+      height: 14px;
+      background: var(--white);
+      border-radius: 50%;
+      transition: left 0.2s;
+    }
+    .a11y-toggle.on::after { left: 21px; }
+    body.large-text { font-size: 120%; }
+    body.high-contrast {
+      --white: #FFFFFF;
+      --muted: #AAAAAA;
+      filter: contrast(1.15);
+    }
+    body.reduce-motion * { animation: none !important; transition: none !important; }
+
+    /* ══════════════════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════════════════ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.25s; }
+    .delay-3 { animation-delay: 0.4s; }
+    .delay-4 { animation-delay: 0.55s; }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .hero-content,
+      .problem-grid,
+      .clan-header,
+      .services-header,
+      .investors-inner,
+      .cta-inner,
+      .footer-grid { grid-template-columns: 1fr; gap: 48px; }
+      .clan-grid { grid-template-columns: repeat(2, 1fr); }
+      .book-card { flex-direction: column; align-items: flex-start; }
+      .book-card-actions { flex-direction: column; width: 100%; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 72px 0; }
+      .wrap { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .services-grid,
+      .academy-grid,
+      .insights-grid,
+      .clan-grid { grid-template-columns: 1fr; }
+      .book-card { grid-column: span 1; }
+      .hero-stats { flex-wrap: wrap; gap: 24px; }
+      .metric-row { flex-direction: column; gap: 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; }
+      #a11y-btn { bottom: 16px; left: 16px; }
+      #a11y-panel { left: 16px; bottom: 80px; width: calc(100% - 32px); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── SKIP LINK ─── -->
+<a href="#main-content" class="skip-link">Перейти к основному контенту</a>
+
+<!-- ══════════════════════════════════════════
+     NAV
+══════════════════════════════════════════ -->
+<nav id="nav" role="navigation" aria-label="Главная навигация">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="Resultat Family Office — на главную">
+      RESULTAT
+      <span>Family Office</span>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#problem">О НАС</a></li>
+      <li><a href="#clan">СИСТЕМА КЛАН</a></li>
+      <li><a href="#services">УСЛУГИ</a></li>
+      <li><a href="#investors">ИНВЕСТОРАМ</a></li>
+      <li><a href="#academy">АКАДЕМИЯ</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="#cta" class="btn btn-outline" style="padding:10px 20px; font-size:12px;" aria-label="Связаться с нами">Контакт</a>
+      <a href="https://wa.me/972000000000" target="_blank" rel="noopener" class="btn btn-gold" style="padding:10px 20px; font-size:12px;" aria-label="Написать в WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      </a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── MOBILE MENU ─── -->
+<div id="mobile-menu" role="dialog" aria-label="Мобильное меню" aria-modal="true">
+  <a href="#problem" onclick="closeMobileMenu()">О НАС</a>
+  <a href="#clan" onclick="closeMobileMenu()">СИСТЕМА КЛАН</a>
+  <a href="#services" onclick="closeMobileMenu()">УСЛУГИ</a>
+  <a href="#investors" onclick="closeMobileMenu()">ИНВЕСТОРАМ</a>
+  <a href="#academy" onclick="closeMobileMenu()">АКАДЕМИЯ</a>
+  <div class="mobile-actions">
+    <a href="https://wa.me/972000000000" target="_blank" rel="noopener" class="btn btn-gold" aria-label="WhatsApp">WhatsApp</a>
+    <a href="#cta" onclick="closeMobileMenu()" class="btn btn-outline">Записаться</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<main id="main-content">
+<section id="hero" aria-labelledby="hero-heading">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid-lines" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow fade-up">
+        <span class="hero-eyebrow-text">Family Office Services</span>
+      </div>
+
+      <h1 id="hero-heading" class="fade-up delay-1">
+        Капитал, созданный вами,<br>
+        будет служить тем,<br>
+        кто придет <em>после вас</em>
+      </h1>
+
+      <p class="hero-sub fade-up delay-2">
+        Resultat Family Office сопровождает семьи в вопросах создания, сохранения,
+        структурирования и передачи активов — с тем же уровнем дисциплины,
+        с которым этот капитал создавался.
+      </p>
+
+      <div class="hero-actions fade-up delay-3">
+        <a href="#cta" class="btn btn-primary" aria-label="Начать конфиденциальный диалог">
+          Начать диалог
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
+        </a>
+        <a href="#clan" class="btn btn-outline" aria-label="Узнать о Системе КЛАН">
+          Система КЛАН
+        </a>
+      </div>
+
+      <div class="hero-stats fade-up delay-4" aria-label="Ключевые показатели">
+        <div class="stat-item">
+          <div class="stat-num">97<span style="font-size:0.5em;color:var(--gold)">%</span></div>
+          <div class="stat-label">Состояний исчезают<br>к 4-му поколению</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">7</div>
+          <div class="stat-label">Элементов<br>системы КЛАН</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Горизонт<br>планирования</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="glass hero-card" role="complementary" aria-label="О системе КЛАН">
+        <div class="hero-card-deco" aria-hidden="true"></div>
+        <div class="hero-card-label">Флагманская система</div>
+        <h3>КЛАН.<br>1000 лет процветания</h3>
+        <p>
+          Операционная система для семей, которые мыслят категориями поколений.
+          Объединяет инвестиционную дисциплину, правовую архитектуру и подготовку наследников.
+        </p>
+        <div class="hero-card-tag">7 элементов устойчивости</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PROBLEM
+══════════════════════════════════════════ -->
+<section id="problem" aria-labelledby="problem-heading">
+  <div class="wrap">
+    <div class="problem-grid">
+      <div>
+        <span class="label label--light">Контекст</span>
+        <div class="problem-stat" aria-label="97 процентов">97<span>%</span></div>
+        <p style="font-size:20px; color:var(--mid); margin-top:16px; max-width:460px; line-height:1.6;">
+          семейных состояний исчезают к четвёртому поколению.
+          Это не случайность — это результат системных ошибок.
+        </p>
+      </div>
+
+      <div>
+        <h2 id="problem-heading" style="color:var(--black); margin-bottom:28px;">
+          Почему теряется капитал
+        </h2>
+        <ul class="problem-list" role="list">
+          <li>Отсутствие структуры владения и управления активами</li>
+          <li>Неподготовленность наследников к принятию ответственности</li>
+          <li>Решения, принятые без системы, без правил и без долгосрочного горизонта</li>
+          <li>Внутрисемейные конфликты, разрушающие больше, чем рыночные потрясения</li>
+        </ul>
+
+        <div class="problem-conclusion" role="note">
+          <p>
+            Resultat Family Office переводит капитал из состояния
+            <strong>«случайного владения»</strong> в состояние
+            <strong>«управляемого наследия»</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CLAN SYSTEM
+══════════════════════════════════════════ -->
+<section id="clan" aria-labelledby="clan-heading">
+  <div class="wrap">
+    <div class="clan-header">
+      <div>
+        <span class="label">Операционная система</span>
+        <h2 id="clan-heading">КЛАН.<br>1000 лет процветания</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <p class="large" style="max-width:480px;">
+          Это не просто книга. Это операционная система для семей,
+          которые мыслят категориями поколений — объединяет 7 элементов
+          устойчивости в единую модель.
+        </p>
+      </div>
+      <div>
+        <blockquote class="clan-quote">
+          «Настоящее богатство — это свобода выбора, устойчивость семьи
+          и личное счастье каждого её члена.»
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="clan-grid" role="list" aria-label="7 элементов системы КЛАН">
+      <div class="clan-item" role="listitem">
+        <span class="clan-num">01</span>
+        <h4>Инвестиционный протокол</h4>
+        <p>Стратегическое размещение капитала в реальные активы и ликвидные инструменты фондового рынка.</p>
+      </div>
+      <div class="clan-item" role="listitem">
+        <span class="clan-num">02</span>
+        <h4>Правовая архитектура</h4>
+        <p>Создание защищённого контура активов, нейтрализующего внешние угрозы и внутренние риски.</p>
+      </div>
+      <div class="clan-item" role="listitem">
+        <span class="clan-num">03</span>
+        <h4>Целеориентированное управление</h4>
+        <p>Рост капитала через призму долгосрочных задач семьи, минуя рыночный шум и волатильность.</p>
+      </div>
+      <div class="clan-item" role="listitem">
+        <span class="clan-num">04</span>
+        <h4>Family Governance</h4>
+        <p>Институциональные правила и протоколы принятия решений — для устранения конфликтов.</p>
+      </div>
+      <div class="clan-item" role="listitem">
+        <span class="clan-num">05</span>
+        <h4>Программа NextGen</h4>
+        <p>Системная подготовка преемников к управлению капиталом и принятию ответственности.</p>
+      </div>
+      <div class="clan-item" role="listitem">
+        <span class="clan-num">06</span>
+        <h4>Налоговая оптимизация</h4>
+        <p>Владение активами в международных юрисдикциях и глобальная структурная оптимизация.</p>
+      </div>
+      <div class="clan-item" role="listitem">
+        <span class="clan-num">07</span>
+        <h4>Управление ликвидностью</h4>
+        <p>Резервные фонды и стратегии оперативного доступа к капиталу в любых условиях.</p>
+      </div>
+      <div class="clan-item glass" style="border: 1px solid var(--glass-border); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;" role="listitem">
+        <div style="font-family:var(--ff-display); font-size:48px; font-weight:300; color:var(--gold); margin-bottom:12px;">7</div>
+        <p style="font-size:13px; color:var(--muted);">Элементов<br>единой системы</p>
+      </div>
+    </div>
+
+    <div class="clan-cta">
+      <a href="#cta" class="btn btn-gold" aria-label="Получить PDF-презентацию системы КЛАН">
+        Получить PDF-презентацию
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
+      </a>
+      <a href="#academy" class="btn btn-ghost" aria-label="Узнать о книге КЛАН">Книга →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SERVICES
+══════════════════════════════════════════ -->
+<section id="services" aria-labelledby="services-heading">
+  <div class="wrap">
+    <div class="services-header">
+      <div>
+        <span class="label">Услуги</span>
+        <h2 id="services-heading">Институциональный уровень для частных семей</h2>
+      </div>
+      <div>
+        <p class="large" style="margin-bottom:24px;">
+          Мы работаем на стороне семьи — без конфликта интересов,
+          без банковских продуктов, без компромиссов с качеством.
+        </p>
+        <p style="font-size:15px;">
+          Наши клиенты — предприниматели, владельцы бизнеса и семьи с международными
+          активами, готовящие передачу капитала следующему поколению.
+        </p>
+      </div>
+    </div>
+
+    <div class="services-grid" role="list" aria-label="Список услуг">
+      <article class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/></svg>
+        </div>
+        <span class="tag">Core Service</span>
+        <h4>Family Office Advisory</h4>
+        <p>Независимое сопровождение без конфликта интересов. Стратегическое управление капиталом семьи как единым институтом.</p>
+      </article>
+
+      <article class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/></svg>
+        </div>
+        <span class="tag">Structuring</span>
+        <h4>Wealth Structuring</h4>
+        <p>Сборка разрозненных активов в единую, контролируемую структуру. Ясная архитектура владения и координации.</p>
+      </article>
+
+      <article class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+        </div>
+        <span class="tag">Legacy</span>
+        <h4>Succession Planning</h4>
+        <p>Проектирование бесшовной передачи активов, ответственности и лидерства. Подготовка преемников.</p>
+      </article>
+
+      <article class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
+        </div>
+        <span class="tag">Oversight</span>
+        <h4>Investment Oversight</h4>
+        <p>Контроль управляющих и поиск закрытых инвестиционных возможностей (Opportunities) для квалифицированных семей.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     INVESTORS
+══════════════════════════════════════════ -->
+<section id="investors" aria-labelledby="investors-heading">
+  <div class="wrap">
+    <div class="investors-inner">
+      <div>
+        <span class="label">Для партнёров и инвесторов</span>
+        <h2 id="investors-heading">Закрытые инвестиционные возможности</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <p class="large" style="margin-bottom:24px;">
+          Мы идентифицируем и структурируем сделки в недвижимости
+          и на фондовом рынке — с фокусом на качество активов.
+        </p>
+        <p>
+          Каждое инвестиционное решение рассматривается индивидуально
+          и соответствует целям, горизонту и допустимому риску конкретной семьи.
+          Мы предпочитаем рассудительность ажиотажу.
+        </p>
+        <p class="disclaimer" role="note">
+          Информация не является инвестиционным советом. Деятельность осуществляется
+          в соответствии с Законом о ценных бумагах Израиля 5728-1968.
+          Инвестиции в квалифицированных инвесторов — только в рамках переговорного процесса.
+        </p>
+      </div>
+
+      <div class="glass investors-card" aria-label="Параметры инвестиционных возможностей">
+        <span class="label">Параметры</span>
+        <div class="metric-row">
+          <div class="metric-item">
+            <div class="metric-val">10–12<span class="metric-unit">%</span></div>
+            <div class="metric-label">Целевая доходность</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-val">Real</div>
+            <div class="metric-label">Фокус на активы</div>
+          </div>
+        </div>
+
+        <ul class="investors-features" aria-label="Характеристики подхода">
+          <li>
+            <div class="check" aria-hidden="true"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M1 4l2.5 2.5L9 1"/></svg></div>
+            Реальные активы (недвижимость)
+          </li>
+          <li>
+            <div class="check" aria-hidden="true"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M1 4l2.5 2.5L9 1"/></svg></div>
+            Фондовый рынок (ликвидные инструменты)
+          </li>
+          <li>
+            <div class="check" aria-hidden="true"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M1 4l2.5 2.5L9 1"/></svg></div>
+            Прозрачная отчётность и структура
+          </li>
+          <li>
+            <div class="check" aria-hidden="true"><svg viewBox="0 0 10 8" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M1 4l2.5 2.5L9 1"/></svg></div>
+            Только квалифицированные инвесторы
+          </li>
+        </ul>
+
+        <a href="#cta" class="btn btn-gold" aria-label="Запросить доступ к инвестиционному меморандуму">
+          Запросить меморандум
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ACADEMY
+══════════════════════════════════════════ -->
+<section id="academy" aria-labelledby="academy-heading">
+  <div class="wrap">
+    <span class="label label--light">Resultat Academy</span>
+    <h2 id="academy-heading" style="color:var(--black); max-width:600px;">
+      Интеллектуальный капитал для семей и их наследников
+    </h2>
+    <p class="large" style="margin-top:16px; max-width:620px;">
+      Образовательные модули и аналитические публикации для владельцев капитала
+      и их преемников — на уровне институциональной экспертизы.
+    </p>
+
+    <div class="academy-grid" role="list" aria-label="Образовательные модули">
+      <article class="academy-card" role="listitem">
+        <div class="num">01</div>
+        <h4>NextGen: Подготовка преемников</h4>
+        <p style="color:var(--mid); font-size:14px;">Этика управления унаследованным капиталом, финансовая дисциплина и роль наследника в семейной структуре.</p>
+      </article>
+      <article class="academy-card" role="listitem">
+        <div class="num">02</div>
+        <h4>Архитектура системного бизнеса</h4>
+        <p style="color:var(--mid); font-size:14px;">Переход от операционного управления к стратегическому видению. Подготовка к передаче или выходу (Exit Strategy).</p>
+      </article>
+      <article class="academy-card" role="listitem">
+        <div class="num">03</div>
+        <h4>Жилая недвижимость: Методология</h4>
+        <p style="color:var(--mid); font-size:14px;">Протоколы Due Diligence, юридическая чистота, минимизация типичных ошибок покупателя.</p>
+      </article>
+      <article class="academy-card" role="listitem">
+        <div class="num">04</div>
+        <h4>Инвестиции в недвижимость</h4>
+        <p style="color:var(--mid); font-size:14px;">Диверсифицированный портфель доходной недвижимости, анализ рыночных циклов, структурирование с соинвесторами.</p>
+      </article>
+
+      <article class="book-card" role="listitem" aria-label="Книга КЛАН">
+        <div>
+          <span class="label" style="margin-bottom:12px;">Флагманское издание</span>
+          <h3>«КЛАН. 1000 лет процветания семьи»</h3>
+          <p style="margin-top:12px; max-width:500px;">
+            7-е издание, дополненное и переработанное. Исчерпывающее руководство
+            по созданию Семейного Инвестиционного Офиса — от аллокации активов
+            до воспитания финансовой ответственности в семье.
+          </p>
+        </div>
+        <div class="book-card-actions">
+          <a href="#cta" class="btn btn-outline" aria-label="Скачать ознакомительный фрагмент книги">Скачать фрагмент</a>
+          <a href="#cta" class="btn btn-gold" aria-label="Приобрести книгу КЛАН">Приобрести</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     INSIGHTS
+══════════════════════════════════════════ -->
+<section id="insights" aria-labelledby="insights-heading">
+  <div class="wrap">
+    <span class="label">Кейсы и аналитика</span>
+    <h2 id="insights-heading" style="max-width:560px;">Знание, основанное на реальном опыте</h2>
+
+    <div class="insights-grid" role="list" aria-label="Аналитические материалы">
+      <article class="insight-card" role="listitem">
+        <span class="insight-tag">Кейс · Израиль</span>
+        <h4>Цена ошибочной экспертизы</h4>
+        <p style="font-size:14px; margin-bottom:20px;">
+          Отказ от актива в Тель-Авиве стоимостью 400 000 ILS на основе неквалифицированного
+          совета привёл к утрате потенциальной капитализации до 4 000 000 ILS.
+          Потеря пожизненного денежного потока — ~33 000 ILS ежемесячно.
+        </p>
+        <p style="font-size:13px; color:var(--gold);">Экспертиза — это инструмент защиты вашей будущей ликвидности.</p>
+      </article>
+
+      <article class="insight-card" role="listitem">
+        <span class="insight-tag">Аналитика · Наследие</span>
+        <h4>Проблема Вандербильта: Эффект третьего поколения</h4>
+        <p style="font-size:14px; margin-bottom:20px;">
+          Только 3% семейных капиталов сохраняются на протяжении четырёх поколений.
+          Пример Корнелиуса Вандербильта ($140 млрд в эквиваленте) демонстрирует:
+          без системной подготовки преемников даже крупнейшие состояния исчезают.
+        </p>
+        <p style="font-size:13px; color:var(--gold);">Система важнее размера капитала.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CTA / CONTACT
+══════════════════════════════════════════ -->
+<section id="cta" aria-labelledby="cta-heading">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div>
+        <span class="label">Начать диалог</span>
+        <h2 id="cta-heading">Сохраняйте важное. Готовьте будущее.</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <p class="large" style="margin-bottom:40px;">
+          Любое наследие начинается с одного системного решения.
+          Начните с конфиденциального знакомства — без обязательств.
+        </p>
+
+        <div class="contact-methods" role="list" aria-label="Способы связи">
+          <a href="https://wa.me/972000000000" target="_blank" rel="noopener"
+             class="contact-method" role="listitem"
+             aria-label="Написать в WhatsApp">
+            <svg viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <div>
+              <div class="contact-method-label">WhatsApp</div>
+              <div class="contact-method-value">Написать напрямую</div>
+            </div>
+          </a>
+
+          <a href="tel:+972000000000" class="contact-method" role="listitem"
+             aria-label="Позвонить нам">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+            <div>
+              <div class="contact-method-label">Телефон</div>
+              <div class="contact-method-value">+972 00 000-0000</div>
+            </div>
+          </a>
+
+          <a href="mailto:info@resultat.co.il" class="contact-method" role="listitem"
+             aria-label="Написать на email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            <div>
+              <div class="contact-method-label">Email</div>
+              <div class="contact-method-value">info@resultat.co.il</div>
+            </div>
+          </a>
+
+          <a href="https://t.me/resultat_office" target="_blank" rel="noopener"
+             class="contact-method" role="listitem" aria-label="Написать в Telegram">
+            <svg viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.820 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.800-.951-.613-.334-1.012.232-1.587.163-.152 2.92-2.676 2.97-2.904.006-.028.013-.13-.048-.185-.061-.055-.151-.036-.215-.022-.092.02-1.564.997-4.415 2.929-.418.287-.796.427-1.134.42-.373-.008-1.09-.211-1.624-.385-.655-.214-1.176-.328-1.131-.692.024-.19.292-.383.803-.58 3.147-1.37 5.246-2.274 6.297-2.71 3.0-1.238 3.624-1.453 4.030-1.460z"/></svg>
+            <div>
+              <div class="contact-method-label">Telegram</div>
+              <div class="contact-method-value">@resultat_office</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="glass cta-contact-box" role="region" aria-labelledby="form-heading">
+        <span class="label" style="display:block; margin-bottom:4px;">Записаться на консультацию</span>
+        <p style="font-size:14px; margin-bottom:24px; color:var(--muted);">
+          Вводная сессия: аудит структуры, выявление узких мест, дорожная карта.
+        </p>
+
+        <form id="contact-form" class="cta-form" novalidate
+              action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
+              aria-labelledby="form-heading">
+          <h3 id="form-heading" class="sr-only">Форма обратной связи</h3>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Имя *</label>
+              <input type="text" id="name" name="name" placeholder="Ваше имя" required
+                     aria-required="true" autocomplete="given-name" />
+            </div>
+            <div class="form-field">
+              <label for="phone">Телефон / WhatsApp</label>
+              <input type="tel" id="phone" name="phone" placeholder="+972 50 000-0000"
+                     autocomplete="tel" />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required
+                   aria-required="true" autocomplete="email" />
+          </div>
+
+          <div class="form-field">
+            <label for="goal">Что вас интересует</label>
+            <select id="goal" name="goal" aria-label="Выберите интересующую тему">
+              <option value="">— выберите —</option>
+              <option value="family-office">Семейный офис</option>
+              <option value="clan-system">Система КЛАН</option>
+              <option value="succession">Передача капитала</option>
+              <option value="investment">Инвестиционные возможности</option>
+              <option value="book">Книга КЛАН</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="message">Ваша ситуация</label>
+            <textarea id="message" name="message" placeholder="Кратко опишите вашу ситуацию или вопрос..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-gold form-submit" aria-label="Отправить заявку на консультацию">
+            Отправить запрос
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
+          </button>
+
+          <p class="form-note" role="note">
+            Все обращения конфиденциальны. Мы свяжемся с вами в течение 24 часов.
+          </p>
+
+          <div id="form-success" role="alert" aria-live="polite"
+               style="display:none; padding:16px; background:rgba(201,169,75,0.1); border:1px solid rgba(201,169,75,0.3); border-radius:2px; font-size:14px; color:var(--gold-lt); margin-top:8px;">
+            ✓ Заявка отправлена. Мы свяжемся с вами в ближайшее время.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">RESULTAT</div>
+        <div class="footer-tagline">Family Office</div>
+        <p class="footer-desc">
+          Управление семейным капиталом через поколения.
+          Независимость. Дисциплина. Наследие.
+        </p>
+      </div>
+
+      <nav class="footer-col" aria-label="Навигация по сайту">
+        <h5>Навигация</h5>
+        <ul>
+          <li><a href="#problem">О нас</a></li>
+          <li><a href="#clan">Система КЛАН</a></li>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#investors">Инвесторам</a></li>
+          <li><a href="#academy">Академия</a></li>
+          <li><a href="#cta">Контакт</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <h5>Контакты</h5>
+        <ul>
+          <li><a href="mailto:info@resultat.co.il">info@resultat.co.il</a></li>
+          <li><a href="tel:+972000000000">+972 00 000-0000</a></li>
+          <li><a href="https://wa.me/972000000000" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://t.me/resultat_office" target="_blank" rel="noopener">Telegram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-legal" role="note">
+        Вышеприведённая информация не является предложением для инвестиций и даёт
+        общее представление. Деятельность осуществляется в соответствии с Законом
+        о ценных бумагах Израиля, 5728-1968. Любые материалы не одобрены Управлением
+        по ценным бумагам. Инвесторы должны полагаться на собственную экспертизу.
+        Вышеизложенное не является обещанием доходности.
+        <a href="#accessibility">הצהרת נגישות / Заявление о доступности</a>
+      </p>
+      <div>
+        <p class="footer-copy">© 2026 Resultat Family Office</p>
+        <div class="footer-links" style="margin-top:8px;">
+          <a href="#privacy">Конфиденциальность</a>
+          <a href="#accessibility" id="accessibility">Доступность</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     ACCESSIBILITY WIDGET
+     Required by Israeli Law (IS 5568)
+══════════════════════════════════════════ -->
+<button id="a11y-btn" aria-label="Панель доступности — נגישות" aria-expanded="false" aria-controls="a11y-panel">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <circle cx="12" cy="4" r="2"/>
+    <path d="M19 9h-5.5l.5 5 2 7h-2l-2-6-2 6H8l2-7 .5-5H5l-.5-2H19.5L19 9z"/>
+  </svg>
+</button>
+
+<div id="a11y-panel" role="dialog" aria-label="Настройки доступности" aria-modal="false">
+  <h6>נגישות / Доступность</h6>
+  <div class="a11y-options">
+    <div class="a11y-option">
+      <span>Крупный текст</span>
+      <div class="a11y-toggle" id="toggle-text" role="switch" aria-checked="false" tabindex="0"
+           aria-label="Включить крупный текст"></div>
+    </div>
+    <div class="a11y-option">
+      <span>Высокий контраст</span>
+      <div class="a11y-toggle" id="toggle-contrast" role="switch" aria-checked="false" tabindex="0"
+           aria-label="Включить высокий контраст"></div>
+    </div>
+    <div class="a11y-option">
+      <span>Без анимаций</span>
+      <div class="a11y-toggle" id="toggle-motion" role="switch" aria-checked="false" tabindex="0"
+           aria-label="Отключить анимации"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SCREEN READER ONLY utility ─── -->
+<style>.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }</style>
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script>
+  /* ─── NAV SCROLL ─── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ─── MOBILE MENU ─── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && !mobileMenu.contains(e.target)) {
+      closeMobileMenu();
+    }
+  });
+
+  /* ─── FORM SUBMIT ─── */
+  const form = document.getElementById('contact-form');
+  const successMsg = document.getElementById('form-success');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = 'Отправка...';
+      btn.disabled = true;
+      btn.setAttribute('aria-busy', 'true');
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.reset();
+          successMsg.style.display = 'block';
+          successMsg.focus();
+        } else {
+          btn.innerHTML = 'Ошибка — попробуйте ещё раз';
+          btn.disabled = false;
+          btn.setAttribute('aria-busy', 'false');
+        }
+      } catch {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        btn.setAttribute('aria-busy', 'false');
+      }
+    });
+  }
+
+  /* ─── ACCESSIBILITY WIDGET ─── */
+  const a11yBtn   = document.getElementById('a11y-btn');
+  const a11yPanel = document.getElementById('a11y-panel');
+
+  a11yBtn.addEventListener('click', () => {
+    const isOpen = a11yPanel.classList.toggle('open');
+    a11yBtn.setAttribute('aria-expanded', isOpen);
+    if (isOpen) a11yPanel.focus();
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!a11yBtn.contains(e.target) && !a11yPanel.contains(e.target)) {
+      a11yPanel.classList.remove('open');
+      a11yBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  function initToggle(id, cssClass, storageKey) {
+    const toggle = document.getElementById(id);
+    const saved = localStorage.getItem(storageKey) === 'true';
+    if (saved) {
+      document.body.classList.add(cssClass);
+      toggle.classList.add('on');
+      toggle.setAttribute('aria-checked', 'true');
+    }
+    function activate() {
+      const isOn = toggle.classList.toggle('on');
+      document.body.classList.toggle(cssClass, isOn);
+      toggle.setAttribute('aria-checked', isOn);
+      localStorage.setItem(storageKey, isOn);
+    }
+    toggle.addEventListener('click', activate);
+    toggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+    });
+  }
+
+  initToggle('toggle-text',     'large-text',     'a11y-large-text');
+  initToggle('toggle-contrast', 'high-contrast',  'a11y-high-contrast');
+  initToggle('toggle-motion',   'reduce-motion',  'a11y-reduce-motion');
+
+  /* ─── SCROLL REVEAL ─── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.clan-item, .service-card, .academy-card, .insight-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
